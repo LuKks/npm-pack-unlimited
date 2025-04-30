@@ -1,0 +1,23 @@
+{
+  "name": "npm-pack-unlimited",
+  "version": "0.0.0",
+  "description": "Create a tarball from a package and node_modules",
+  "main": "index.js",
+  "bin": {
+    "npm-pack-unlimited": "bin.js"
+  },
+  "files": [],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukks/npm-pack-unlimited.git"
+  },
+  "author": "Lucas Barrena (LuKks)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukks/npm-pack-unlimited/issues"
+  },
+  "homepage": "https://github.com/lukks/npm-pack-unlimited#readme"
+}
