@@ -14,6 +14,9 @@ module.exports = function pack (opts = {}) {
   const tgz = pkg.name + '-' + pkg.version + '.tgz'
 
   const files = pkg.files || ['package.json']
+  const tmpPackage = path.join(tmp, 'package')
+
+  fs.mkdirSync(tmpPackage, { recursive: true })
 
   // Not following the NPM standard, so be explicit on files
   if (!files.includes('package.json')) {
@@ -24,7 +27,7 @@ module.exports = function pack (opts = {}) {
 
   for (const name of files) {
     const src = path.join(cwd, name)
-    const dst = path.join(path.join(tmp, 'package'), name)
+    const dst = path.join(tmpPackage, name)
 
     count += copy(src, dst)
   }
@@ -49,7 +52,7 @@ function copy (src, dst) {
     fs.mkdirSync(dst, { recursive: true })
 
     for (const entry of fs.readdirSync(src)) {
-      copy(path.join(src, entry), path.join(dst, entry))
+      count += copy(path.join(src, entry), path.join(dst, entry))
     }
   } else {
     fs.copyFileSync(src, dst)
